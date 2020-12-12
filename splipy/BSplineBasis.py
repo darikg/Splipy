@@ -5,7 +5,6 @@ import splipy.state as state
 from bisect import bisect_right, bisect_left
 import numpy as np
 import copy
-from splipy import basis_eval
 from scipy.sparse import csr_matrix
 
 __all__ = ['BSplineBasis']
@@ -118,6 +117,8 @@ class BSplineBasis:
             points *i*
         :rtype: numpy.array
         """
+        import splipy.basis_eval as basis_eval
+
         # for single-value input, wrap it into a list so it don't crash on the loop below
         t = ensure_listlike(t)
         t = np.array(t, dtype=np.float64)
